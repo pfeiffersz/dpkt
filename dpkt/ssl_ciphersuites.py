@@ -103,9 +103,13 @@ class CipherSuite(object):
         'DES': 8,
         'DES40': 8,
         'IDEA': 8,
+        'IDEA_128': 16,
         'RC2_40': 8,
+        'RC2_128': 8,
+        'RC2_128_EXPORT40': 8,
         'RC4_40': None,
         'RC4_128': None,
+        'RC4_128_EXPORT40': None,
         'SEED': 16,
     }
 
@@ -165,16 +169,16 @@ CIPHERSUITES = [
     CipherSuite(0x000e, 'DH', 'RSA_EXPORT', 'DES40   ', 'CBC ', 'SHA'),
     CipherSuite(0x000f, 'DH', 'RSA       ', 'DES     ', 'CBC ', 'SHA'),
     CipherSuite(0x0010, 'DH', 'RSA       ', '3DES_EDE', 'CBC ', 'SHA'),
-    CipherSuite(0x0011, 'DHE', 'DSS_EXPORT', 'DES40  ', 'CBC ', 'SHA'),
+    CipherSuite(0x0011, 'DHE', 'DSS_EXPORT','DES40   ', 'CBC ', 'SHA'),
     CipherSuite(0x0012, 'DHE', 'DSS      ', 'DES     ', 'CBC ', 'SHA'),
     CipherSuite(0x0013, 'DHE', 'DSS      ', '3DES_EDE', 'CBC ', 'SHA'),
-    CipherSuite(0x0014, 'DHE', 'RSA_EXPORT', 'DES40  ', 'CBC ', 'SHA'),
+    CipherSuite(0x0014, 'DHE', 'RSA_EXPORT','DES40   ', 'CBC ', 'SHA'),
     CipherSuite(0x0015, 'DHE', 'RSA      ', 'DES     ', 'CBC ', 'SHA'),
     CipherSuite(0x0016, 'DHE', 'RSA      ', '3DES_EDE', 'CBC ', 'SHA'),
 
-    CipherSuite(0x0017, 'DH', 'anon_EXPORT', 'RC4_40 ', '    ', 'MD5'),
+    CipherSuite(0x0017, 'DH', 'anon_EXPORT','RC4_40  ', '    ', 'MD5'),
     CipherSuite(0x0018, 'DH', 'anon      ', 'RC4_128 ', '    ', 'MD5'),
-    CipherSuite(0x0019, 'DH', 'anon_EXPORT', 'DES40  ', 'CBC ', 'SHA'),
+    CipherSuite(0x0019, 'DH', 'anon_EXPORT','DES40   ', 'CBC ', 'SHA'),
     CipherSuite(0x001a, 'DH', 'anon      ', 'DES     ', 'CBC ', 'SHA'),
     CipherSuite(0x001b, 'DH', 'anon      ', '3DES_EDE', 'CBC ', 'SHA'),
 
@@ -560,6 +564,20 @@ CIPHERSUITES = [
     # Unassigned: 0xccaf-0xfefd
     # Reserved: 0xfefe-0xffff
 
+    CipherSuite(0x010080, 'RSA', 'RSA    ', 'RC4_128         ', '   ', 'MD5',
+            'SSL_CK_RC4_128_WITH_MD5'),
+    CipherSuite(0x020080, 'RSA', 'RSA    ', 'RC4_128_EXPORT40', '   ', 'MD5',
+            'SSL_CK_RC4_128_EXPORT40_WITH_MD5'),
+    CipherSuite(0x030080, 'RSA', 'RSA    ', 'RC2_128         ', 'CBC', 'MD5',
+            'SSL_CK_RC2_128_CBC_WITH_MD5',          'RC2_CBC_128'),
+    CipherSuite(0x040080, 'RSA', 'RSA    ', 'RC2_128_EXPORT40', 'CBC', 'MD5',
+            'SSL_CK_RC2_128_CBC_EXPORT40_WITH_MD5', 'RC2_CBC_128_EXPORT40'),
+    CipherSuite(0x050080, 'RSA', 'RSA    ', 'IDEA_128        ', 'CBC', 'MD5',
+            'SSL_CK_IDEA_128_CBC_WITH_MD5',         'IDEA_CBC_128'),
+    CipherSuite(0x060040, 'RSA', 'RSA    ', 'DES             ', 'CBC', 'MD5',
+            'SSL_CK_DES_64_CBC_WITH_MD5',           'DES_CBC_64'),
+    CipherSuite(0x0700C0, 'RSA', 'RSA    ', '3DES            ', 'CBC', 'MD5',
+            'SSL_CK_DES_192_EDE3_CBC_WITH_MD5',     'DES_EDE3_CBC_192'),
 ]
 
 BY_CODE = dict(
